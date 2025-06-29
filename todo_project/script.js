@@ -48,8 +48,14 @@ function loadTasks() {
 }
 
 function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
-  localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+  document.body.classList.toggle('dark-mode');
+  const icon = document.getElementById('mode-icon');
+
+  if (document.body.classList.contains('dark-mode')) {
+    icon.textContent = '🌙'; // dark mode = σελήνη
+  } else {
+    icon.textContent = '🌞'; // light mode = ήλιος
+  }
 }
 
 // Load saved dark mode on startup
