@@ -1,23 +1,48 @@
+:root {
+  --bg-color: #f5f7fa;
+  --text-color: #333;
+  --card-color: #ffffff;
+  --button-color: #3498db;
+  --button-hover: #2980b9;
+  --delete-color: #e74c3c;
+  --delete-hover: #c0392b;
+  --clear-btn: #95a5a6;
+  --clear-hover: #7f8c8d;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+  --card-color: #1f1f1f;
+  --button-color: #4a90e2;
+  --button-hover: #357ab8;
+  --delete-color: #ff6b6b;
+  --delete-hover: #e74c3c;
+  --clear-btn: #7f8c8d;
+  --clear-hover: #636e72;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f7f9;
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   margin: 0;
   padding: 0;
+  transition: all 0.3s ease;
 }
 
 .container {
   max-width: 500px;
   margin: 50px auto;
-  background: #ffffff;
+  background: var(--card-color);
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  box-shadow: 0 0 15px rgba(0,0,0,0.08);
 }
 
 h1 {
   text-align: center;
-  color: #2c3e50;
+  margin-bottom: 20px;
 }
 
 .input-group {
@@ -31,20 +56,22 @@ input[type="text"] {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  background: #fff;
 }
 
 button {
   padding: 10px 15px;
   font-size: 16px;
-  background-color: #3498db;
+  background-color: var(--button-color);
   border: none;
   color: white;
   border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 button:hover {
-  background-color: #2980b9;
+  background-color: var(--button-hover);
 }
 
 ul {
@@ -54,7 +81,7 @@ ul {
 }
 
 li {
-  background: #ecf0f1;
+  background: var(--bg-color);
   padding: 10px;
   border-radius: 6px;
   margin-bottom: 10px;
@@ -64,25 +91,35 @@ li {
 }
 
 li button {
-  background-color: #e74c3c;
-  font-size: 14px;
+  background-color: var(--delete-color);
   padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 6px;
 }
 
 li button:hover {
-  background-color: #c0392b;
+  background-color: var(--delete-hover);
 }
 
 .clear-btn {
   margin-top: 15px;
-  background-color: #bdc3c7;
+  background-color: var(--clear-btn);
 }
 
 .clear-btn:hover {
-  background-color: #95a5a6;
+  background-color: var(--clear-hover);
 }
 
-/* Responsive */
+.toggle-mode {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--button-color);
+  text-decoration: underline;
+}
+
 @media (max-width: 600px) {
   .container {
     margin: 20px;
@@ -90,11 +127,11 @@ li button:hover {
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   button {
     font-size: 14px;
-    padding: 8px 10px;
+    padding: 8px 12px;
   }
 }
