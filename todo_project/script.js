@@ -1,4 +1,14 @@
-document.addEventListener('DOMContentLoaded', loadTasks);
+document.addEventListener('DOMContentLoaded', () => {
+  loadTasks();
+
+  const icon = document.getElementById('mode-icon');
+  if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark-mode");
+    icon.textContent = '🌙';  // dark mode icon
+  } else {
+    icon.textContent = '🌞';  // light mode icon
+  }
+});
 
 function addTask() {
   const taskInput = document.getElementById("taskInput");
@@ -53,14 +63,9 @@ function toggleDarkMode() {
 
   if (document.body.classList.contains('dark-mode')) {
     icon.textContent = '🌙'; // dark mode = σελήνη
+    localStorage.setItem("darkMode", "true");
   } else {
     icon.textContent = '🌞'; // light mode = ήλιος
+    localStorage.setItem("darkMode", "false");
   }
 }
-
-// Load saved dark mode on startup
-document.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("darkMode") === "true") {
-    document.body.classList.add("dark-mode");
-  }
-});
