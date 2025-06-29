@@ -14,6 +14,11 @@
       <button onclick="addTask()">Add</button>
     </div>
     <ul id="taskList"></ul>
+    <div class="filters">
+  <button onclick="setFilter('all')">All</button>
+  <button onclick="setFilter('active')">Active</button>
+  <button onclick="setFilter('completed')">Completed</button>
+    </div>
     <button class="clear-btn" onclick="clearAll()">Clear All</button>
     <p class="toggle-mode" onclick="toggleDarkMode()">
   <span id="mode-icon">🌞</span> Toggle Dark Mode</p>
