@@ -119,6 +119,33 @@ li button:hover {
   color: var(--button-color);
   text-decoration: underline;
 }
+.completed span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.filters {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filters button {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.filters button:hover {
+  background-color: var(--button-hover);
+}
+
 
 @media (max-width: 600px) {
   .container {
