@@ -2,24 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>To-Do List App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To-Do List</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
+  <div class="container">
     <h1>To-Do List</h1>
-    <button id="toggle-theme">Toggle Dark Mode</button>
-  </header>
-
-  <main>
-    <div class="todo-container">
-      <input type="text" id="task-input" placeholder="Enter a new task..." />
-      <button id="add-task">Add Task</button>
-      <ul id="task-list"></ul>
+    <div class="input-group">
+      <input type="text" id="taskInput" placeholder="Add a new task..." />
+      <button onclick="addTask()">Add</button>
     </div>
-  </main>
-
+    <ul id="taskList"></ul>
+    <button class="clear-btn" onclick="clearAll()">Clear All</button>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
