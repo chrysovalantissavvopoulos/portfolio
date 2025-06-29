@@ -1,46 +1,48 @@
-// Load tasks from localStorage
-document.addEventListener("DOMContentLoaded", () => {
-  const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  storedTasks.forEach(addTaskToList);
+document.addEventListener('DOMContentLoaded', loadTasks);
 
-  // Apply theme
-  const isDark = localStorage.getItem("theme") === "dark";
-  if (isDark) {
-    document.body.classList.add("dark-mode");
-  }
-});
-
-const taskInput = document.getElementById("task-input");
-const taskList = document.getElementById("task-list");
-const addButton = document.getElementById("add-task");
-
-// Add task
-addButton.addEventListener("click", () => {
-  const task = taskInput.value.trim();
-  if (task !== "") {
-    addTaskToList(task);
-    saveTask(task);
+function addTask() {
+  const taskInput = document.getElementById("taskInput");
+  const taskText = taskInput.value.trim();
+  if (taskText !== "") {
+    createTask(taskText);
+    saveTask(taskText);
     taskInput.value = "";
   }
-});
-
-function addTaskToList(task) {
-  const li = document.createElement("li");
-  li.textContent = task;
-  taskList.appendChild(li);
 }
 
-// Save task to localStorage
+function createTask(text) {
+  const li = document.createElement("li");
+  li.innerHTML = `${text} <button onclick="deleteTask(this)">🗑️</button>`;
+  document.getElementById("taskList").appendChild(li);
+}
+
+function deleteTask(button) {
+  const li = button.parentElement;
+  const taskText = li.firstChild.textContent.trim();
+  removeTask(taskText);
+  li.remove();
+}
+
+function clearAll() {
+  if (confirm("Delete all tasks?")) {
+    localStorage.removeItem("tasks");
+    document.getElementById("taskList").innerHTML = "";
+  }
+}
+
 function saveTask(task) {
-  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   tasks.push(task);
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-// Toggle dark mode
-const toggleBtn = document.getElementById("toggle-theme");
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-  const mode = document.body.classList.contains("dark-mode") ? "dark" : "light";
-  localStorage.setItem("theme", mode);
-});
+function removeTask(task) {
+  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  tasks = tasks.filter(t => t !== task);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function loadTasks() {
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  tasks.forEach(task => createTask(task));
+}
